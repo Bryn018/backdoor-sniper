@@ -1,0 +1,888 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar for finding lists etc. */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted-foreground) transparent;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: color-mix(in oklch, var(--muted-foreground) 35%, transparent);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in oklch, var(--muted-foreground) 55%, transparent);
+}
+
+/* Subtle grid background for the hero */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--foreground) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--foreground) 4%, transparent) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Animated circuit-board background for the hero */
+.circuit-bg {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.circuit-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><g stroke='%2310b981' fill='none' stroke-width='.5' stroke-linecap='round'><path d='M0 20h40m20 0h60M20 60h20m20 0h40M0 100h50m20 0h50M40 0v20m0 20v20M60 20v40M80 60v40M20 60v40M100 60v20' opacity='.13'/></g><g stroke='%2310b981' fill='none' stroke-width='.3' opacity='.06'><path d='M0 40h120M0 80h120M40 0v120M80 0v120'/></g><g fill='%2310b981'><circle cx='40' cy='20' r='1.5'><animate attributeName='opacity' values='.12;.5;.12' dur='4s' repeatCount='indefinite'/><animate attributeName='r' values='1.5;2.5;1.5' dur='4s' repeatCount='indefinite'/></circle><circle cx='60' cy='20' r='1.5'><animate attributeName='opacity' values='.12;.5;.12' dur='4s' begin='1.3s' repeatCount='indefinite'/><animate attributeName='r' values='1.5;2.5;1.5' dur='4s' begin='1.3s' repeatCount='indefinite'/></circle><circle cx='20' cy='60' r='1.5'><animate attributeName='opacity' values='.12;.5;.12' dur='4s' begin='2.5s' repeatCount='indefinite'/><animate attributeName='r' values='1.5;2.5;1.5' dur='4s' begin='2.5s' repeatCount='indefinite'/></circle><circle cx='70' cy='100' r='1.5'><animate attributeName='opacity' values='.12;.5;.12' dur='4s' begin='1.8s' repeatCount='indefinite'/><animate attributeName='r' values='1.5;2.5;1.5' dur='4s' begin='1.8s' repeatCount='indefinite'/></circle><circle cx='40' cy='60' r='1'><animate attributeName='opacity' values='.08;.4;.08' dur='3.5s' begin='.7s' repeatCount='indefinite'/></circle><circle cx='80' cy='60' r='1'><animate attributeName='opacity' values='.08;.4;.08' dur='3.5s' begin='.3s' repeatCount='indefinite'/></circle><circle cx='80' cy='100' r='1'><animate attributeName='opacity' values='.08;.35;.08' dur='3.5s' begin='.5s' repeatCount='indefinite'/></circle></g></svg>");
+  background-size: 120px 120px;
+  pointer-events: none;
+}
+
+/* Light mode: slightly boost circuit pattern visibility */
+:root:not(.dark) .circuit-bg::before {
+  opacity: 0.9;
+}
+
+.dark .circuit-bg::before {
+  opacity: 1;
+}
+
+/* Animated scan line sweeping across the circuit board */
+@keyframes circuit-scan {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.circuit-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklch, oklch(0.7 0.15 160) 4%, transparent) 45%,
+    color-mix(in oklch, oklch(0.7 0.15 160) 10%, transparent) 50%,
+    color-mix(in oklch, oklch(0.7 0.15 160) 4%, transparent) 55%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: circuit-scan 12s linear infinite;
+  pointer-events: none;
+}
+
+/* Glow used on the scan button */
+.glow-emerald {
+  box-shadow: 0 0 0 0 color-mix(in oklch, var(--primary) 0%, transparent);
+  transition: box-shadow 0.3s ease;
+}
+.glow-emerald:hover {
+  box-shadow: 0 0 24px -4px color-mix(in oklch, oklch(0.7 0.15 160) 50%, transparent);
+}
+
+/* Animated pulse for dangerous risk gauge */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Animated shield for hero */
+@keyframes shield-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(1deg); }
+}
+.animate-shield-float {
+  animation: shield-float 3s ease-in-out infinite;
+}
+
+@keyframes shield-ring-pulse {
+  0% { transform: scale(1); opacity: 0.3; }
+  70% { transform: scale(1.15); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+.animate-ring-pulse {
+  animation: shield-ring-pulse 2s ease-out infinite;
+}
+
+/* Subtle scan line animation */
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.animate-scan-line {
+  animation: scan-line 2s linear infinite;
+}
+
+/* Verdict badge glow effects */
+.verdict-glow-dangerous {
+  text-shadow: 0 0 20px color-mix(in oklch, oklch(0.577 0.245 27.325) 40%, transparent);
+}
+.verdict-glow-malicious {
+  text-shadow: 0 0 16px color-mix(in oklch, oklch(0.65 0.2 55) 35%, transparent);
+}
+.verdict-glow-suspicious {
+  text-shadow: 0 0 12px color-mix(in oklch, oklch(0.75 0.15 85) 25%, transparent);
+}
+
+/* Finding card severity left border */
+.finding-border-critical { border-left: 3px solid oklch(0.577 0.245 27.325); }
+.finding-border-high { border-left: 3px solid oklch(0.65 0.2 55); }
+.finding-border-medium { border-left: 3px solid oklch(0.75 0.15 85); }
+.finding-border-low { border-left: 3px solid oklch(0.646 0.222 141.116); }
+.finding-border-info { border-left: 3px solid oklch(0.556 0 0); }
+
+/* Code snippet styling */
+.code-snippet {
+  background: color-mix(in oklch, var(--muted) 60%, transparent);
+  border: 1px solid color-mix(in oklch, var(--border) 50%, transparent);
+  border-radius: 0.375rem;
+}
+.code-snippet:hover {
+  border-color: color-mix(in oklch, var(--border) 80%, transparent);
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--background) 97%, oklch(0.7 0.15 160)) 0%,
+    var(--background) 40%,
+    var(--background) 60%,
+    color-mix(in oklch, var(--background) 97%, oklch(0.577 0.1 27.325)) 100%
+  );
+}
+
+/* Panel header gradient */
+.panel-header {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklch, var(--muted) 40%, transparent) 0%,
+    transparent 100%
+  );
+}
+
+/* -----------------------------------------------------------
+   Python syntax highlighting (dark-first, with light overrides)
+   Color palette: emerald accent + warm severity tones
+----------------------------------------------------------- */
+.tok-comment {
+  color: oklch(0.65 0.02 200);
+  font-style: italic;
+}
+.tok-string {
+  color: oklch(0.78 0.16 145);
+}
+.tok-keyword {
+  color: oklch(0.72 0.2 12);
+  font-weight: 600;
+}
+.tok-builtin {
+  color: oklch(0.78 0.13 75);
+}
+.tok-number {
+  color: oklch(0.75 0.18 290);
+}
+.tok-decorator {
+  color: oklch(0.78 0.14 200);
+  font-weight: 500;
+}
+.tok-operator {
+  color: oklch(0.7 0.04 240);
+}
+.tok-function {
+  color: oklch(0.82 0.16 220);
+}
+.tok-self {
+  color: oklch(0.78 0.14 350);
+  font-style: italic;
+}
+
+:root:not(.dark) {
+  .tok-comment {
+    color: oklch(0.45 0.02 200);
+  }
+  .tok-string {
+    color: oklch(0.4 0.16 145);
+  }
+  .tok-keyword {
+    color: oklch(0.45 0.22 12);
+  }
+  .tok-builtin {
+    color: oklch(0.45 0.14 75);
+  }
+  .tok-number {
+    color: oklch(0.4 0.18 290);
+  }
+  .tok-decorator {
+    color: oklch(0.42 0.14 200);
+  }
+  .tok-operator {
+    color: oklch(0.4 0.04 240);
+  }
+  .tok-function {
+    color: oklch(0.42 0.16 220);
+  }
+  .tok-self {
+    color: oklch(0.45 0.14 350);
+  }
+}
+
+/* -----------------------------------------------------------
+   Code editor: overlay technique
+   textarea (transparent text, visible caret) sits on top of a
+   <pre> with highlighted spans. Both share identical font metrics.
+   Both elements are absolutely positioned inside a relative parent
+   so they layer perfectly on top of each other.
+----------------------------------------------------------- */
+.code-overlay-wrap {
+  position: relative;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  line-height: 20px;
+  tab-size: 4;
+  min-height: 0;
+  height: 100%;
+}
+.code-overlay-pre,
+.code-overlay-textarea {
+  margin: 0;
+  padding: 12px;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  tab-size: inherit;
+  letter-spacing: 0;
+  white-space: pre;
+  word-wrap: normal;
+  overflow-wrap: normal;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.code-overlay-pre {
+  pointer-events: none;
+  background: transparent;
+  color: var(--foreground);
+  overflow: auto;
+  /* hide scrollbar — the textarea's scrollbar is what users interact with */
+  scrollbar-width: none;
+  z-index: 1;
+}
+.code-overlay-pre::-webkit-scrollbar {
+  display: none;
+}
+.code-overlay-textarea {
+  background: transparent;
+  color: transparent;
+  caret-color: oklch(0.78 0.16 160);
+  border: 0;
+  outline: none;
+  resize: none;
+  z-index: 2;
+  white-space: pre;
+  overflow: auto;
+}
+.code-overlay-textarea::selection {
+  background: color-mix(in oklch, oklch(0.7 0.15 160) 30%, transparent);
+  color: transparent;
+}
+.code-overlay-textarea::placeholder {
+  color: transparent;
+}
+
+/* Finding-line marker on the gutter */
+.finding-line-marker {
+  position: relative;
+  cursor: pointer;
+}
+.finding-line-marker::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 0 2px 2px 0;
+}
+.finding-line-marker-critical::before { background: oklch(0.577 0.245 27.325); }
+.finding-line-marker-high::before { background: oklch(0.65 0.2 55); }
+.finding-line-marker-medium::before { background: oklch(0.75 0.15 85); }
+.finding-line-marker-low::before { background: oklch(0.646 0.222 141.116); }
+.finding-line-marker-info::before { background: oklch(0.556 0 0); }
+
+.finding-line-bg-critical { background: color-mix(in oklch, oklch(0.577 0.245 27.325) 8%, transparent); }
+.finding-line-bg-high { background: color-mix(in oklch, oklch(0.65 0.2 55) 7%, transparent); }
+.finding-line-bg-medium { background: color-mix(in oklch, oklch(0.75 0.15 85) 6%, transparent); }
+.finding-line-bg-low { background: color-mix(in oklch, oklch(0.646 0.222 141.116) 5%, transparent); }
+
+/* Active line (jumped-to from a finding card) */
+.active-line-bg {
+  background: color-mix(in oklch, oklch(0.577 0.245 27.325) 18%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in oklch, oklch(0.577 0.245 27.325) 40%, transparent);
+}
+
+/* Glassmorphism utility for modals/cards */
+.glass {
+  background: color-mix(in oklch, var(--card) 80%, transparent);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+}
+
+/* Subtle entrance animation for findings / cards */
+@keyframes slide-in-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-in-up {
+  animation: slide-in-up 0.25s ease-out both;
+}
+
+/* Shimmer for loading bars */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--muted) 60%, transparent) 25%,
+    color-mix(in oklch, var(--muted) 100%, transparent) 50%,
+    color-mix(in oklch, var(--muted) 60%, transparent) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+/* Gradient ring accent for hero card */
+.gradient-ring {
+  position: relative;
+}
+.gradient-ring::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, oklch(0.7 0.15 160 / 50%), transparent 50%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Custom scrollbar for history scroll area (sonner-like) */
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklch, var(--muted-foreground) 40%, transparent) transparent;
+}
+.thin-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.thin-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: color-mix(in oklch, var(--muted-foreground) 35%, transparent);
+  border-radius: 9999px;
+}
+.thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in oklch, var(--muted-foreground) 60%, transparent);
+}
+
+/* Conic gradient spinner for AI loading */
+@keyframes spin-conic {
+  to { transform: rotate(360deg); }
+}
+.conic-spinner {
+  background: conic-gradient(from 0deg, transparent 0%, oklch(0.7 0.15 160) 100%);
+  animation: spin-conic 1s linear infinite;
+  mask: radial-gradient(circle, transparent 55%, #000 56%);
+  -webkit-mask: radial-gradient(circle, transparent 55%, #000 56%);
+}
+
+/* -----------------------------------------------------------
+   Additional styling — Round 4
+----------------------------------------------------------- */
+
+/* Smooth page transitions */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out both;
+}
+
+/* Risk score counter animation */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-count-up {
+  animation: count-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Staggered children entrance */
+.stagger-children > * {
+  animation: slide-in-up 0.25s ease-out both;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.05s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.15s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.25s; }
+.stagger-children > *:nth-child(n+7) { animation-delay: 0.3s; }
+
+/* Micro-interaction: button press effect */
+.micro-press {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.micro-press:active {
+  transform: scale(0.97);
+}
+
+/* Subtle gradient border for main panels */
+.panel-border-glow {
+  position: relative;
+}
+.panel-border-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    oklch(0.7 0.15 160 / 15%) 0%,
+    transparent 30%,
+    transparent 70%,
+    oklch(0.577 0.1 27.325 / 10%) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Hover card lift effect — spring-like transition for smoother feel */
+.hover-lift {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px -4px oklch(0 0 0 / 15%);
+}
+
+/* Finding card hover — subtle lift + shadow */
+.finding-hover-lift {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.finding-hover-lift:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px -4px oklch(0 0 0 / 18%);
+}
+
+/* Card glow on hover — colored glow matching severity.
+   Apply with a data attribute: data-glow-color="oklch(...)" or a CSS variable.
+   Falls back to a neutral glow if no custom property is set. */
+.card-glow {
+  --card-glow-color: oklch(0.556 0 0);
+  transition: box-shadow 0.3s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 0 16px -4px color-mix(in oklch, var(--card-glow-color) 35%, transparent);
+}
+/* Severity-specific glow variants */
+.card-glow-critical { --card-glow-color: oklch(0.577 0.245 27.325); }
+.card-glow-high { --card-glow-color: oklch(0.65 0.2 55); }
+.card-glow-medium { --card-glow-color: oklch(0.75 0.15 85); }
+.card-glow-low { --card-glow-color: oklch(0.646 0.222 141.116); }
+.card-glow-info { --card-glow-color: oklch(0.556 0 0); }
+
+/* Focus ring for accessibility */
+.focus-ring:focus-visible {
+  outline: 2px solid oklch(0.7 0.15 160);
+  outline-offset: 2px;
+}
+
+/* Verdict badge shimmer */
+@keyframes verdict-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.verdict-shimmer {
+  background-size: 200% auto;
+  animation: verdict-shimmer 3s linear infinite;
+}
+
+/* Diff view styling */
+.diff-before {
+  background: color-mix(in oklch, oklch(0.577 0.245 27.325) 5%, transparent);
+  border-left: 3px solid oklch(0.577 0.245 27.325);
+}
+.diff-after {
+  background: color-mix(in oklch, oklch(0.646 0.222 141.116) 5%, transparent);
+  border-left: 3px solid oklch(0.646 0.222 141.116);
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 640px) {
+  .code-overlay-wrap {
+    font-size: 11px;
+  }
+  .code-overlay-pre,
+  .code-overlay-textarea {
+    padding: 8px;
+  }
+}
+
+/* ============================================================
+   Round-7 additions: critical-pulse border, skeleton loaders,
+   watch-mode pulse, header progress bar, animated verdict ring
+   ============================================================ */
+
+/* Animated gradient border for critical findings — a moving red→orange sweep */
+@keyframes critical-border-sweep {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.critical-pulse-border {
+  position: relative;
+}
+.critical-pulse-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    90deg,
+    oklch(0.577 0.245 27.325) 0%,
+    oklch(0.72 0.19 60) 25%,
+    oklch(0.577 0.245 27.325) 50%,
+    oklch(0.72 0.19 60) 75%,
+    oklch(0.577 0.245 27.325) 100%
+  );
+  background-size: 200% 100%;
+  animation: critical-border-sweep 3s linear infinite;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Skeleton loading shimmer for history list */
+@keyframes skeleton-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--muted) 60%, transparent) 0%,
+    color-mix(in oklch, var(--muted) 100%, transparent) 50%,
+    color-mix(in oklch, var(--muted) 60%, transparent) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+  border-radius: 4px;
+}
+.skeleton-row {
+  height: 56px;
+  border-radius: 6px;
+}
+
+/* Watch mode indicator — pulsing eye icon background */
+@keyframes watch-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklch, oklch(0.646 0.222 141.116) 50%, transparent); }
+  50%      { box-shadow: 0 0 0 6px color-mix(in oklch, oklch(0.646 0.222 141.116) 0%, transparent); }
+}
+.watch-active {
+  animation: watch-pulse 1.8s ease-out infinite;
+}
+
+/* Header progress bar — shows scan progress */
+@keyframes header-progress {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.header-progress-bar {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  overflow: hidden;
+  background: color-mix(in oklch, oklch(0.646 0.222 141.116) 12%, transparent);
+}
+.header-progress-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(0.646 0.222 141.116) 50%,
+    transparent 100%
+  );
+  animation: header-progress 1.2s ease-in-out infinite;
+}
+
+/* Animated verdict ring (rotates when verdict is dangerous/malicious) */
+@keyframes verdict-ring-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.verdict-ring-active {
+  animation: verdict-ring-rotate 8s linear infinite;
+}
+
+/* Empty state illustration — animated radar sweep */
+@keyframes radar-sweep {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.radar-sweep {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 240deg,
+    color-mix(in oklch, oklch(0.646 0.222 141.116) 20%, transparent) 290deg,
+    color-mix(in oklch, oklch(0.646 0.222 141.116) 50%, transparent) 340deg,
+    color-mix(in oklch, oklch(0.646 0.222 141.116) 80%, transparent) 360deg
+  );
+  border-radius: 9999px;
+  mask: radial-gradient(circle, transparent 12%, black 14%, black 100%);
+  -webkit-mask: radial-gradient(circle, transparent 12%, black 14%, black 100%);
+  animation: radar-sweep 4s linear infinite;
+  transform-origin: center;
+  opacity: 0.9;
+}
+
+/* Container for radar elements — prevents overflow */
+.radar-container {
+  isolation: isolate;
+}
+
+/* Subtle animated grid for empty states */
+@keyframes grid-drift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+.grid-drift {
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--border) 50%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--border) 50%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: grid-drift 12s linear infinite;
+}
+
+/* Custom rule editor — animated gradient on the new rule button */
+@keyframes emerald-glow {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklch, oklch(0.646 0.222 141.116) 30%, transparent); }
+  50%      { box-shadow: 0 0 16px 0 color-mix(in oklch, oklch(0.646 0.222 141.116) 25%, transparent); }
+}
+.emerald-glow-hover:hover {
+  animation: emerald-glow 1.5s ease-in-out infinite;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .critical-pulse-border::before,
+  .skeleton,
+  .watch-active,
+  .header-progress-bar::after,
+  .verdict-ring-active,
+  .radar-sweep,
+  .grid-drift,
+  .emerald-glow-hover:hover,
+  .button-press,
+  .scan-btn-glow,
+  .severity-chip-enter {
+    animation: none !important;
+  }
+}
+
+/* Micro-interaction: button press feedback */
+.button-press {
+  transition: transform 0.1s ease-out;
+}
+.button-press:active {
+  transform: scale(0.96);
+}
+
+/* Scan button glow on hover — calls attention to the primary CTA */
+@keyframes scan-btn-glow {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklch, oklch(0.646 0.222 141.116) 0%, transparent); }
+  50%      { box-shadow: 0 0 20px 2px color-mix(in oklch, oklch(0.646 0.222 141.116) 30%, transparent); }
+}
+.scan-btn-glow:hover {
+  animation: scan-btn-glow 1.8s ease-in-out infinite;
+}
+
+/* Severity chip entrance animation */
+@keyframes severity-chip-enter {
+  from { opacity: 0; transform: translateY(-2px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.severity-chip-enter {
+  animation: severity-chip-enter 0.2s ease-out;
+}
+
+/* Smooth scrollbar for findings list (Firefox) */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklch, var(--border) 60%, transparent) transparent;
+}
+
+/* Subtle pulse for AI analysis button to draw attention */
+@keyframes ai-btn-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklch, oklch(0.646 0.222 141.116) 0%, transparent); }
+  50%      { box-shadow: 0 0 0 4px color-mix(in oklch, oklch(0.646 0.222 141.116) 15%, transparent); }
+}
+.ai-btn-pulse {
+  animation: ai-btn-pulse 2.5s ease-in-out infinite;
+}
+
+/* Code preview line highlight for findings */
+.finding-line-context {
+  background: linear-gradient(to right, color-mix(in oklch, oklch(0.646 0.222 141.116) 5%, transparent), transparent);
+  border-left: 2px solid color-mix(in oklch, oklch(0.646 0.222 141.116) 50%, transparent);
+}

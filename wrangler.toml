@@ -1,0 +1,23 @@
+name = "backdoor-sniper"
+main = ".open-next/worker.js"
+compatibility_date = "2025-07-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Serve the static assets from the OpenNext build via Workers Assets.
+assets = { directory = ".open-next/assets", binding = "ASSETS" }
+
+# Custom domain (Option B): add scan.insights.autos as a Custom Domain in the
+# Cloudflare dashboard (Workers → backdoor-sniper → Triggers/Custom Domains)
+# instead of `routes`, so no Zone Worker-Routes permission is needed in the
+# deploy token. `routes` is omitted on purpose.
+# routes = ["scan.insights.autos/*"]
+
+# D1 database binding (SQLite on Cloudflare).
+[[d1_databases]]
+binding = "DB"
+database_name = "backdoor-sniper"
+database_id = "a6d58f01-3e2d-42d9-8bc1-f8cebb6418cc"
+migrations_dir = "migrations"
+
+[vars]
+NODE_ENV = "production"

@@ -1,0 +1,23 @@
+{
+  "name": "Backdoor Sniper",
+  "image": "ghcr.io/oven-sh/devcontainer-bun:1.3.14",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "forwardPorts": [3000, 81],
+  "portsAttributes": {
+    "3000": { "label": "Backdoor Sniper (Next.js)" },
+    "81": { "label": "Caddy proxy" }
+  },
+  "postCreateCommand": "bash scripts/codespace-setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
+  "remoteUser": "root"
+}

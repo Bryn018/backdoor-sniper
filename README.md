@@ -7,7 +7,7 @@ findings, SARIF/PDF reports, audit trails, and an optional AI analysis layer.
 
 > Defensive tool. Use only on code you own or are authorized to audit.
 
-**Live:** https://scan.insights.autos  ·  **Repo:** https://github.com/Bryn018/backdoor-sniper
+**Live:** https://scan.insights.autos  ·  **Repo:** https://github.com/Bryn018/BackdoorSniper
 
 ## Features
 
